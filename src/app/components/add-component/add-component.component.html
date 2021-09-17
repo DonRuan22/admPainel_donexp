@@ -1,0 +1,85 @@
+<form novalidate #editProductForm="ngForm" class="form-edit" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>Adicionar Produto</h1>
+    <mat-dialog-content>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Nome do Produto" type="text" [(ngModel)]="product.title" name="title" #title="ngModel" required>
+          <mat-error *ngIf="title.errors?.required">Nome e obrigatorio</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Link do Produto" type="text" [(ngModel)]="product.image" name="image" #title="ngModel" required>
+          <mat-error *ngIf="title.errors?.required">Link e obrigatorio</mat-error>
+        </mat-form-field>   
+      </p>
+      <p>
+        <mat-form-field style="width: 300px;">
+          <textarea matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"
+              [(ngModel)]="product.description" 
+              name="description" 
+              #description="ngModel"
+              placeholder="Description"
+              required></textarea>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Descricao curta" type="text" [(ngModel)]="product.short_description" name="short_description" #short_description="ngModel" required>
+          <mat-error *ngIf="short_description.errors?.required">Descrição curta e obrigatoria</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Preco" type="text" [(ngModel)]="product.price" name="price" #price="ngModel" required>
+          <mat-error *ngIf="price.errors?.required">Preco e obrigatorio</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Quantidade" type="text" [(ngModel)]="product.quantity" name="quantity" #quantity="ngModel">
+          <mat-error *ngIf="quantity.errors?.required">Quantidade e obrigatorio</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Categoria</mat-label>
+          <select matNativeControl [(ngModel)]="product.cat_id" name="categorie" #categorie="ngModel" [ngStyle]="{'color': 'black'}" required >
+            <mat-error *ngIf="categorie.errors?.required">Categoria e obrigatorio</mat-error>
+            <option value="Tenis">Tenis</option>
+            <option value="Camiseta">Camiseta</option>
+          </select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Marca" type="text" [(ngModel)]="product.brand" name="brand" #brand="ngModel">
+          <mat-error *ngIf="brand.errors?.required">Marca e obrigatorio</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Tamanhos: Separe por virgula" type="text" [(ngModel)]="product.sizes" name="sizes" #sizes="ngModel">
+          <mat-error *ngIf="sizes.errors?.required">Tamanhos e obrigatorio</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Cores: Separe por virgula" type="text" [(ngModel)]="product.color" name="color" #color="ngModel">
+          <mat-error *ngIf="color.errors?.required">Cor e obrigatorio</mat-error>
+        </mat-form-field>
+      </p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <p>
+        <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+        <button type="submit" mat-raised-button color="primary" (ngSubmit)="onSubmit()" class="background-primary text-floral-white" [disabled]="editProductForm.form.invalid">Editar Produto</button>
+      </p>
+    </mat-dialog-actions>
+</form>
+  
+  
+
